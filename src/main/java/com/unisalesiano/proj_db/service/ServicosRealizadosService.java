@@ -9,6 +9,8 @@ public interface ServicosRealizadosService {
 
     List<ServicosRealizados> listarTodos();
 
+    List<ServicosRealizados> buscarServicosRealizadosPorReserva(Long idReserva);
+
     Optional<ServicosRealizados> buscarPorId(Long id);
 
     ServicosRealizados salvar(ServicosRealizados servicosRealizados);

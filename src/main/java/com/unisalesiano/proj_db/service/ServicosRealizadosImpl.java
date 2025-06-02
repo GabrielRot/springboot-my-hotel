@@ -20,6 +20,11 @@ public class ServicosRealizadosImpl implements ServicosRealizadosService {
     }
 
     @Override
+    public List<ServicosRealizados> buscarServicosRealizadosPorReserva(Long idReserva) {
+        return repository.findReservaIdWithServicos(idReserva);
+    }
+
+    @Override
     public Optional<ServicosRealizados> buscarPorId(Long id) {
         return repository.findById(id);
     }

@@ -1,5 +1,6 @@
 package com.unisalesiano.proj_db.controller;
 
+import com.unisalesiano.proj_db.entity.HospedesReservados;
 import com.unisalesiano.proj_db.entity.Reserva;
 import com.unisalesiano.proj_db.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +47,9 @@ public class ReservaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> excluir(@PathVariable Long id) {
-        service.excluir(id);
+    @DeleteMapping
+    public ResponseEntity<Void> excluir(@RequestBody List<Long> ids) {
+        ids.forEach(service::excluir);
 
         return ResponseEntity.noContent().build();
     }

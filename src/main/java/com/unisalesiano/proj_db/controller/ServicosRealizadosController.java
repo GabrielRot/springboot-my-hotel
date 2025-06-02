@@ -1,5 +1,6 @@
 package com.unisalesiano.proj_db.controller;
 
+import com.unisalesiano.proj_db.entity.HospedesReservados;
 import com.unisalesiano.proj_db.entity.ServicosRealizados;
 import com.unisalesiano.proj_db.service.ServicosRealizadosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,17 @@ public class ServicosRealizadosController {
     @GetMapping
     public List<ServicosRealizados> listarTodos() {
         return service.listarTodos();
+    }
+
+    @GetMapping("{id}/servicos")
+    public ResponseEntity<List<ServicosRealizados>> listarServicosRealizados(@PathVariable Long id) {
+        List<ServicosRealizados> result = service.buscarServicosRealizadosPorReserva(id);
+
+        if (result.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("{id}")
@@ -49,9 +61,9 @@ public class ServicosRealizadosController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> excluir(@PathVariable Long id) {
-        service.excluir(id);
+    @DeleteMapping
+    public ResponseEntity<Void> excluir(@RequestBody List<Long> ids) {
+        ids.forEach(service::excluir);
 
         return ResponseEntity.noContent().build();
     }

@@ -22,6 +22,17 @@ public class HospedesReservadosController {
         return service.listarTodos();
     }
 
+    @GetMapping("{id}/hospedes")
+    public ResponseEntity<List<HospedesReservados>> listarHospdesReservados(@PathVariable Long id) {
+        List<HospedesReservados> result = service.buscarHospedesReservadosPorReserva(id);
+
+        if (result.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<HospedesReservados> buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id)
@@ -47,9 +58,9 @@ public class HospedesReservadosController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> excluir(@PathVariable Long id) {
-        service.excluir(id);
+    @DeleteMapping
+    public ResponseEntity<Void> excluir(@RequestBody List<Long> ids) {
+        ids.forEach(service::excluir);
 
         return ResponseEntity.noContent().build();
     }

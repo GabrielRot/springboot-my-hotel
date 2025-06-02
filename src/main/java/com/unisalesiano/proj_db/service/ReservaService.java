@@ -1,5 +1,6 @@
 package com.unisalesiano.proj_db.service;
 
+import com.unisalesiano.proj_db.entity.HospedesReservados;
 import com.unisalesiano.proj_db.entity.Reserva;
 
 import java.util.List;

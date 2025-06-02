@@ -46,9 +46,10 @@ public class TipoQuartoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        service.deletar(id);
+    @DeleteMapping
+    public ResponseEntity<Void> deletar(@RequestBody List<Long> idsTiposQuartos) {
+        idsTiposQuartos.forEach(service::deletar);
+
         return ResponseEntity.ok().build();
     }
 

@@ -9,6 +9,8 @@ public interface HospedesReservadosService {
 
     List<HospedesReservados> listarTodos();
 
+    List<HospedesReservados> buscarHospedesReservadosPorReserva(Long idReserva);
+
     Optional<HospedesReservados> buscarPorId(Long id);
 
     HospedesReservados salvar(HospedesReservados hospedesReservados);

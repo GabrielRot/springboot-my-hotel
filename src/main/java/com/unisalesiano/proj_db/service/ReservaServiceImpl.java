@@ -1,5 +1,6 @@
 package com.unisalesiano.proj_db.service;
 
+import com.unisalesiano.proj_db.entity.HospedesReservados;
 import com.unisalesiano.proj_db.entity.Reserva;
 import com.unisalesiano.proj_db.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

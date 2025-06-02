@@ -24,10 +24,10 @@ public class Quarto {
     @Column(name  = "descricao")
     private String descricao;
 
-    @Column(name = "observacoes", columnDefinition = "LONGTEXT")
-    private String observacoes;
-
     @Column(name = "valor")
     private Double valor;
+
+    @Column(name = "observacoes", columnDefinition = "LONGTEXT")
+    private String observacoes;
 
 }

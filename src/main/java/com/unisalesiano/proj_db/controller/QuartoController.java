@@ -47,9 +47,9 @@ public class QuartoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        service.deletar(id);
+    @DeleteMapping
+    public ResponseEntity<Void> deletar(@RequestBody List<Long> idsQuartos) {
+        idsQuartos.forEach(service::deletar);
 
         return ResponseEntity.noContent().build();
     }

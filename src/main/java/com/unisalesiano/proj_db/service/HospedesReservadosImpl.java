@@ -15,6 +15,11 @@ public class HospedesReservadosImpl implements HospedesReservadosService {
     private HospedesReservadosRepository repository;
 
     @Override
+    public List<HospedesReservados> buscarHospedesReservadosPorReserva(Long idReserva) {
+        return repository.findByReservaIdWithHospedes(idReserva);
+    }
+
+    @Override
     public List<HospedesReservados> listarTodos() {
         return repository.findAll();
     }
